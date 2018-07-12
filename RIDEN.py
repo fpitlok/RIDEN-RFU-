@@ -6,6 +6,7 @@ from gtts import gTTS
 from googletrans import Translator
 from multiprocessing import Pool, Process
 from ffmpy import FFmpeg
+from humanfriendly import format_timespan, format_size, format_number, format_length
 import time, random, asyncio, timeit, sys, json, codecs, threading, glob, re, string, os, requests, subprocess, six, urllib, urllib.parse, ast, pytz, wikipedia, pafy, youtube_dl, atexit
 
 print ("\n\n ---  WELCOME TO RFU SEKAWAN  ---\n")
