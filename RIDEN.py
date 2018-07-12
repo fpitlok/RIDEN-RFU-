@@ -2826,6 +2826,29 @@ def RIDEN_FAST_USER(fast):
                                 except Exception as e:
                                     cl.sendText(kirim, str(e))
 
+                        elif cmd.startswith("instapost"):
+                            if user in RfuSekawan or user in Squad["Admin"]:
+                                try:
+                                    sep = text.split(" ")
+                                    text = text.replace(sep[0] + " ","")   
+                                    cond = text.split(" ")
+                                    username = cond[0]
+                                    no = cond[1] 
+                                    r = requests.get("http://rahandiapi.herokuapp.com/instapost/{}/{}?key=betakey".format(str(username), str(no)))
+                                    data = r.text
+                                    data = json.loads(data)
+                                    if data["find"] == True:
+                                        if data["media"]["mediatype"] == 1:
+                                            client.sendImageWithURL(msg.to, str(data["media"]["url"]))
+                                        if data["media"]["mediatype"] == 2:
+                                            client.sendVideoWithURL(msg.to, str(data["media"]["url"]))
+                                        ret_ = "╔══[ Info Post ]"
+                                        ret_ += "\n╠ Jumlah Like : {}".format(str(data["media"]["like_count"]))
+                                        ret_ += "\n╠ Jumlah Comment : {}".format(str(data["media"]["comment_count"]))
+                                        ret_ += "\n╚══[ Caption ]\n{}".format(str(data["media"]["caption"]))
+                                        cl.sendMessage(to, str(ret_))
+                                except Exception as error:
+                                    logError(error)
 #--------------------------------- TRANSLATOR -------------------------------------------------#
 
                         elif rfuText.lower().startswith("indonesian: "):
