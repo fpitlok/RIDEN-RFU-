@@ -274,6 +274,7 @@ kapan:
 wikipedia:
 kalender
 image:
+instapost
 youtube:
 ___[ TRANSLATOR ]___
 indonesian:
